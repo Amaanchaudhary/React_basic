@@ -9,8 +9,7 @@ const Navbar = () => {
     const fetchData = () => {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          let success = false``;
-
+          let success = true;
           if (success) {
             resolve("Amaan");
           } else {
@@ -32,6 +31,7 @@ const Navbar = () => {
       .finally(() => {
         setPending(false);
       });
+
   }, []);
 
   return (

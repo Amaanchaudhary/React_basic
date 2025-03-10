@@ -1,17 +1,40 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
+
+const Welcome = () => {
+  useEffect(() => {
+    console.log("🚀 Component Mounted: Welcome");
+
+    return () => {
+      console.log("❌ Component Unmounted: Goodbye");
+    };
+  }, []);
+
+  return <h1>Welcome to my Page</h1>;
+};
 
 const Homepage = () => {
   const [count, setCount] = useState(0);
-  const isFirstRender = useRef(true);
+  const renderCount = useRef(1);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
-    alert("Count Changed");
+    document.title = `count ${count}`;
   }, [count]);
+
+  useEffect(() => {
+    renderCount.current += 1;
+  });
+
+  const fruits = ["Apple", "Banana", "Mango"];
+
+  const [val1] = fruits;
+
+
+  function test({name, age}){
+    console.log(name);
+    console.log(age);
+  }
+
+  test({name: "amaan", age : 21})
 
   return (
     <div
@@ -29,6 +52,12 @@ const Homepage = () => {
       </button>
 
       <button onClick={() => setCount(0)}>Reset</button>
+
+      {count > 1 && <Welcome />}
+
+      <h3>Component re-rendered: {renderCount.current} times</h3>
+
+      {/* <input ref={inputRef} type="text" placeholder="Message" /> */}
     </div>
   );
 };

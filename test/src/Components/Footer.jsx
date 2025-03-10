@@ -33,6 +33,8 @@ const Footer = () => {
     fetchData();
   }, []);
 
+  
+
   return (
     <div
       style={{

@@ -14,6 +14,7 @@ const Welcome = () => {
 
 const Homepage = () => {
   const [count, setCount] = useState(0);
+
   const renderCount = useRef(1);
 
   useEffect(() => {
@@ -23,6 +24,10 @@ const Homepage = () => {
   useEffect(() => {
     renderCount.current += 1;
   });
+
+  // useEffect(() => {
+  //   alert("Welcome Amaan")
+  // },[count])
 
   const fruits = ["Apple", "Banana", "Mango"];
 
@@ -43,6 +48,7 @@ const Homepage = () => {
       }}
     >
       <h1>Count : {count}</h1>
+
       <button onClick={() => setCount((prevState) => prevState + 1)}>
         Increment
       </button>

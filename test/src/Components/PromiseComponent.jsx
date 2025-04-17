@@ -7,7 +7,7 @@ const PromiseComponent = () => {
 
   const fetchdata = () => {
     return new Promise((resolve, reject) => {
-      let success = true;
+      let success = false;
       setTimeout(() => {
         if (success) {
           resolve("Data Fetched");
@@ -46,7 +46,8 @@ const PromiseComponent = () => {
 
   useEffect(() => {
     setPending(true);
-    Promise.all([fetchdata(), fetchGender(), fetchUser()])
+    // Promise.all([fetchdata(), fetchGender(), fetchUser()])
+    fetchdata()
       .then((result) => {
         setData(result);
       })
@@ -60,7 +61,5 @@ const PromiseComponent = () => {
 
   return <div>{pending ? <>...Pending</> : isError ? isError : data}</div>;
 };
-
-
 
 export default PromiseComponent;
